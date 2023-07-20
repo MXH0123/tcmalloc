@@ -2,26 +2,26 @@
 
 1. 更新包列表：首先，打开终端，并在执行任何包管理操作之前，最好先更新包列表，以确保使用最新的信息。
 
-```bash
+
 sudo apt update
-```
+
 
 2. 安装tcmalloc：接下来，使用apt安装tcmalloc和gperftools相关的包。
 
-```bash
+
 sudo apt install libgoogle-perftools4 libgoogle-perftools-dev
-```
+
 
 以上命令将安装tcmalloc库以及开发文件，以便在编译程序时能够链接到tcmalloc。
 
 3. 验证安装：安装完成后，你可以通过运行以下命令来验证tcmalloc是否正确安装：
 
-```bash
+
 ldconfig -p | grep tcmalloc
-```
 
-如果安装成功，你应该能够看到tcmalloc相关的库信息。
 
-现在，你已经成功在Ubuntu系统上安装了tcmalloc。在编译你的程序时，使用`-ltcmalloc`选项来链接tcmalloc库。如果你遇到之前提到的`pthread_atfork`错误，可以参考之前的回答中的解决方法来处理。
+如果安装成功，能够看到tcmalloc相关的库信息。
 
-请注意，tcmalloc是一个性能优化库，它主要用于提高内存分配和释放的效率，特别是在多线程程序中。在使用tcmalloc之前，建议先对你的程序进行性能分析，并确保tcmalloc对你的应用程序有实际的性能提升。
+在编译程序时，使用`-ltcmalloc`选项来链接tcmalloc库。如果你遇到`pthread_atfork`错误，可能是环境变量问题。
+
+请注意，tcmalloc是一个性能优化库，它主要用于提高内存分配和释放的效率，特别是在多线程程序中。
